@@ -17,8 +17,10 @@
 #define BASE_OF_PRODUCT "base_of_Product.txt"
 #define SERIAL_BASE "list_Of_Product.txt"
 
+///Default login & pass for admin is : "admin" "admin" without quotes
+
 //list_Of_Ours_Product o[Class_For_Static::num_Of_Product];
-///Przy wrzucaniu tego dopisac, ze w testach uzywanie cyfr jest fatalne w skutkach
+
 typedef int(*defin);
 class Class_For_Static
 {
@@ -67,7 +69,7 @@ public:
     list_Of_Ours_Product(const list_Of_Ours_Product &);
     ~list_Of_Ours_Product() {}
     void add_Item(list_Of_Ours_Product *&o);
-    void info_Prod(const list_Of_Ours_Product []);
+    void info_Prod();
     void show_Info(const list_Of_Ours_Product o[]);
     void deleting_Item()
     {
@@ -75,21 +77,11 @@ public:
     }
     void buying_Item(list_Of_Ours_Product *&o);
     void remove_Item(list_Of_Ours_Product *&o);
-
+    void default_Item();
     bool test(unsigned int decision);
     void loading(std::string,list_Of_Ours_Product *&o,const bool);
 };
 void mem_Allocation(list_Of_Ours_Product *&o);
-
-void list_Of_Ours_Product::info_Prod(const list_Of_Ours_Product o[])
-{
-    for(unsigned int i=0;i<Class_For_Static::num_Of_Product-1; i++)
-    {
-
-        std::cout<<i<<o[i].name<<'\n';
-    }
-}
-
 void list_Of_Ours_Product::loading(std::string file_Name,list_Of_Ours_Product *&o,const bool wheter_Save)
 {
 
@@ -178,7 +170,7 @@ void list_Of_Ours_Product::loading(std::string file_Name,list_Of_Ours_Product *&
                             if(wheter_Save)o[number_Of_Repetitions-1].how_Much=std::stoi(temporarity_For_Save_Of_Object.c_str());
                             temporarity_For_Save_Of_Object="";
                             //std::cout<<"\nAdditional information: \n";
-                            for(int i=stop+1;i<length;i++)///Maybe, should be a function ?
+                            for(int i=stop+1;i<length;i++)
                             {
                                 temporarity_For_Save_Of_Object+=here_Will_Text[i];
                             }
@@ -976,13 +968,16 @@ void control_Panel(bool decision_Admin,list_Of_Ours_Product *&o)
 
     std::cout<<"Actual product in our base: "
              <<'\n';
-    o->info_Prod(o);
+
+
+
 
     std::cout<<'\n'<<'\n';
 
     std::cout<<"Press: "<<'\n';
 
-    decision_Admin?std::cout<<"0.Show details information about items..."<<'\n'
+    decision_Admin?std::cout
+                            <<"0.Show details information about items..."<<'\n'
                             <<"1.Add item to database..."<<'\n'
                             <<"2.Remove item from the database..."<<'\n'
                             <<"3.Exit program"<<'\n'
@@ -993,7 +988,8 @@ void control_Panel(bool decision_Admin,list_Of_Ours_Product *&o)
                             <<"8.Browse user..."<<'\n'
                             <<"9.Reset pass and login to default..."<<'\n'
                             :
-                std::cout   <<"0.Show details information about items..."<<'\n'
+                std::cout
+                            <<"0.Show details information about items..."<<'\n'
                             <<"1.Show buying items..."<<'\n'
                             <<"2.Log out"<<'\n'
                             <<"3.Exit program"<<'\n'
@@ -1100,7 +1096,7 @@ void everything_Is_Good(unsigned short y_D,list_Of_Ours_Product *&o)
 ///void everything_Is_Good(unsigned short y_D)
 {
     std::cout<<"Good decision"<<'\n';
-
+    list_Of_Product(o);
 
 
 
@@ -1119,17 +1115,27 @@ void everything_Is_Good(unsigned short y_D,list_Of_Ours_Product *&o)
     ///Polymorphism
 
 }
+void list_Of_Product(list_Of_Ours_Product *&o)
+{
+    std::cout<<"Actually, we have: "<<Class_For_Static::num_Of_Product<<'\n';
 
 
-void list_Of_Ours_Product::show_Info(const list_Of_Ours_Product *o)
+
+
+
+    printf("%s","Exacly:\n ");
+
+    std::cout<<Class_For_Static::list_Prod<<'\n';
+
+
+
+
+
+}
+
+void list_Of_Ours_Product::show_Info(const list_Of_Ours_Product o[])
 {
 
-
-    for(unsigned int i=0; i<Class_For_Static::num_Of_Product-1; i++)
-    {
-
-        std::cout<<i<<o[i].name<<'\n';
-    }
 
     unsigned int which;
     std::cout<<"Which item showing information? "<<'\n';
@@ -1138,7 +1144,11 @@ void list_Of_Ours_Product::show_Info(const list_Of_Ours_Product *o)
 
     std::cout.flush();
 
-
+    for(unsigned int i=0; i<Class_For_Static::num_Of_Product; i++)
+    {
+        std::cout<<"AAAAAAAAAAAAAAAAA";
+        std::cout<<i<<o[i].name<<'\n';
+    }
 
 
     //std::cout<<"UWAGA: "<<o[6].name<<'\n';
@@ -1259,7 +1269,7 @@ void list_Of_Ours_Product::add_Item(list_Of_Ours_Product *&o)///CREATE THIS
     save::saving(name_Product,temp_From_Float_And_Int);
     save::saving(name_Product,o[Class_For_Static::num_Of_Product-1].info);
 
-
+    o->show_Info(o);///It's WORK!!!
 
 
 
@@ -1378,7 +1388,7 @@ void list_Of_Ours_Product::remove_Item(list_Of_Ours_Product *&o)
 
 
 
-
+    list_Of_Product(o);
     std::string which;
     using std::endl;
     std::cout<<endl;
@@ -1597,7 +1607,7 @@ void list_Of_Ours_Product::buying_Item( list_Of_Ours_Product *&o)
 {
     if(Class_For_Static::num_Of_Product>0)
     {
-
+        list_Of_Product(o);
         std::cout.flags();
 
 
