@@ -2,8 +2,8 @@
 #include <cstdio>///As following
 #include <cstdlib>///New compiler don't need this
 #include <vector>///For future
-#include <random>
-#include <cstring>
+#include <random>///Random Device
+#include <cstring>///stoi, atoi
 #include <cmath>///abs
 #include <memory>///shared_ptr
 #include <limits>///using Limits
@@ -19,7 +19,7 @@
 
 ///Default login & pass for admin is : "admin" "admin" without quotes
 
-//list_Of_Ours_Product o[Class_For_Static::num_Of_Product];
+
 
 typedef int(*defin);
 class Class_For_Static
@@ -69,15 +69,13 @@ public:
     list_Of_Ours_Product(const list_Of_Ours_Product &);
     ~list_Of_Ours_Product() {}
     void add_Item(list_Of_Ours_Product *&o);
-    void info_Prod();
     void show_Info(const list_Of_Ours_Product o[]);
     void deleting_Item()
     {
-        std::shared_ptr<list_Of_Ours_Product> obj1(new list_Of_Ours_Product);   ///I know that is wrong way, but i like this
+    ///    std::shared_ptr<list_Of_Ours_Product> obj1(new list_Of_Ours_Product);   ///I know that is wrong way, but i like this
     }
     void buying_Item(list_Of_Ours_Product *&o);
     void remove_Item(list_Of_Ours_Product *&o);
-    void default_Item();
     bool test(unsigned int decision);
     void loading(std::string,list_Of_Ours_Product *&o,const bool);
 };
@@ -965,11 +963,11 @@ void control_Panel(bool decision_Admin,list_Of_Ours_Product *&o)
     //Class_For_Static::el_Used>0?ile=Class_For_Static::el_Used-1:Class_For_Static::el_Used;
     std::cout<<"Hello in you panel, ";
     decision_Admin==1?std::cout<<"Admin"<<'\n':std::cout<<"Your login: "<<Class_For_Static::actual_User<<'\n';
-
+    std::cout<<"_____________________________________________________\n";
     std::cout<<"Actual product in our base: "
              <<'\n';
 
-
+std::cout<<"_____________________________________________________\n";
 
 
     std::cout<<'\n'<<'\n';
@@ -981,7 +979,7 @@ void control_Panel(bool decision_Admin,list_Of_Ours_Product *&o)
                             <<"1.Add item to database..."<<'\n'
                             <<"2.Remove item from the database..."<<'\n'
                             <<"3.Exit program"<<'\n'
-                            <<"4.Check how works system from user"<<'\n'
+                            <<"4.Check how works system from user. This cause kick off with Admin settings"<<'\n'
                             <<"5.Change pass"<<'\n'
                             <<"6.Change login"<<'\n'
                             <<"7.Show yours login and pass"<<'\n'
@@ -1064,7 +1062,7 @@ case 0:
     case 6:
     {
 
-        f1.change_Password(o);
+        f1.change_Login(o);
         break;
     }
     case 7:
@@ -1140,7 +1138,7 @@ void list_Of_Ours_Product::show_Info(const list_Of_Ours_Product o[])
     unsigned int which;
     std::cout<<"Which item showing information? "<<'\n';
     std::cin>>which;
-
+    std::cout<<"_____________________________________________________\n";
 
     std::cout.flush();
 
@@ -1156,6 +1154,9 @@ void list_Of_Ours_Product::show_Info(const list_Of_Ours_Product o[])
         std::cout<<"Product: "<<o[which].name<<' '<<"price: "<<o[which].price<<'\n'
                  <<"In magazine we have: "<<o[which].how_Much<<'\n'
                  <<"Information: "<<o[which].info<<'\n';
+
+    std::cout<<"_____________________________________________________\n";
+
 
 }
 
@@ -1173,6 +1174,9 @@ void list_Of_Ours_Product::add_Item(list_Of_Ours_Product *&o)///CREATE THIS
    // std::cout<<" allocation: "<<o[0].name;
     Class_For_Static::num_Of_Product++;
     std::string name_Product;///Char is single character
+
+    std::cout<<"_____________________________________________________\n";
+
     std::cout<<"Name yours item: "<<'\n';
     std::cin.ignore();
 
@@ -1609,6 +1613,7 @@ void list_Of_Ours_Product::buying_Item( list_Of_Ours_Product *&o)
     {
         list_Of_Product(o);
         std::cout.flags();
+
 
 
         std::cout<<"List of product: "<<'\n';
