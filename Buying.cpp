@@ -148,7 +148,7 @@ void list_Of_Ours_Product::loading(std::string file_Name,list_Of_Ours_Product *&
 
                                 if(here_Will_Text[i]=='\n')
                                 {
-                                   
+
                                     stop=i;
 
                                     break;
@@ -1146,7 +1146,7 @@ void list_Of_Ours_Product::show_Info(const list_Of_Ours_Product o[])
 
     for(unsigned int i=0; i<Class_For_Static::num_Of_Product; i++)
     {
-      
+
         std::cout<<i<<o[i].name<<'\n';
     }
 
@@ -1160,8 +1160,8 @@ void list_Of_Ours_Product::show_Info(const list_Of_Ours_Product o[])
 }
 
 
-bool deci(float &);
-bool deci( int &);///I know, that template was be a simpler than this, but i template debugging is horrible
+bool validationTest(float &);
+bool validationTest( int &);///I know, that template was be a simpler than this, but i template debugging is horrible
 
 
 void list_Of_Ours_Product::add_Item(list_Of_Ours_Product *&o)///CREATE THIS
@@ -1180,7 +1180,7 @@ void list_Of_Ours_Product::add_Item(list_Of_Ours_Product *&o)///CREATE THIS
 
 
     std::cin>>name_Product;
-    // while(deci(std::cin)==false);
+    // while(validationTest(std::cin)==false);
 
     while(std::cin.fail())
     {
@@ -1212,7 +1212,7 @@ void list_Of_Ours_Product::add_Item(list_Of_Ours_Product *&o)///CREATE THIS
 
 
 
-   
+
 
     std::cout<<"Okay, now write price..."<<'\n';
 
@@ -1223,9 +1223,9 @@ void list_Of_Ours_Product::add_Item(list_Of_Ours_Product *&o)///CREATE THIS
 
 
 
-    
 
-    ///SKONCZYLEM TUTAJ
+
+
 
 
 
@@ -1235,7 +1235,7 @@ void list_Of_Ours_Product::add_Item(list_Of_Ours_Product *&o)///CREATE THIS
     //std::cin.ignore();
     float price_Product;
 
-    deci(price_Product);
+    validationTest(price_Product);
 
 
 
@@ -1245,7 +1245,7 @@ void list_Of_Ours_Product::add_Item(list_Of_Ours_Product *&o)///CREATE THIS
     printf("%s","\nNow, write number of this item: \n");
     int number_Product;
 
-    deci(number_Product);
+    validationTest(number_Product);
 
 
     std::cout<<"Number: "<<number_Product<<'\n';
@@ -1276,7 +1276,7 @@ void list_Of_Ours_Product::add_Item(list_Of_Ours_Product *&o)///CREATE THIS
     control_Panel(1,o);
 
 }
-bool deci( int &l )
+bool validationTest( int &l )
 {
     do
     {
@@ -1319,7 +1319,7 @@ bool deci( int &l )
     if(l==0)
     {
         std::cout<<"Try again... Can't device by zero!"<<'\n';
-        deci(l);
+        validationTest(l);
 
     }
     else if(l<0)
@@ -1332,7 +1332,7 @@ bool deci( int &l )
 
     return true;
 }
-bool deci(float &l )
+bool validationTest(float &l )
 {
     do
     {
@@ -1365,7 +1365,7 @@ bool deci(float &l )
     if(l==0)
     {
         std::cout<<"Try again...This operation is not save..."<<'\n';
-        deci(l);
+        validationTest(l);
 
     }
     else if(l<0)
@@ -1418,7 +1418,7 @@ void list_Of_Ours_Product::remove_Item(list_Of_Ours_Product *&o)
                     int decision=0;
                     std::cout<<"Are you sure, that you can delete a: "<<where_Going<<" ?"<<'\n';
                     std::cout<<"Press 2, to refuse, 1 to accept: "<<'\n';
-                    deci(decision);
+                    validationTest(decision);
                     if(decision==2)
                     {
                         ff.close();
@@ -1501,7 +1501,7 @@ void list_Of_Ours_Product::remove_Item(list_Of_Ours_Product *&o)
     std::cout<<"Remember, if you can back, write number,smaller than 0"<<'\n';
 
 
-    deci(who);
+    validationTest(who);
     if(who<0)control_Panel(1,o);
 
     std::cout<<"WHO: "<<who<<'\n';
@@ -1563,7 +1563,7 @@ int main()
     std::cout<<"Register, enter 1"<<'\n';
     std::cout<<"Sign in, enter 2"<<'\n';
     std::cout<<"No one ! I'll exit! Press 3"<<'\n';
-    deci(decision);
+    validationTest(decision);
 
 
 
@@ -1576,8 +1576,8 @@ int main()
         std::cout<<"Press 1 if can Login as user, or 2 as Administrator "
                  <<'\n';
 
-        deci(decision);
-        if(decision>2 || decision<1)deci(decision);
+        validationTest(decision);
+        if(decision>2 || decision<1)validationTest(decision);
         Admin a1;
         decision==1?V_U->login_For_User(real_Pointer):a1.login_Of_Administator(real_Pointer);
 
