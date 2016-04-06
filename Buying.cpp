@@ -1,4 +1,4 @@
-#include <iostream>///no comment
+#include <iostream>///cout,cin, and a lot other
 #include <cstdio>///As following
 #include <cstdlib>///New compiler don't need this
 #include <vector>///For future
@@ -9,7 +9,10 @@
 #include <limits>///using Limits
 #include <fstream>///file
 
-#define ADMIN_PATH_LOGIN "a_BIN_LOG.bin"///
+
+///MACRO
+
+#define ADMIN_PATH_LOGIN "a_BIN_LOG.bin"
 #define ADMIN_PATH_PASS "a_BIN_HASH_PASS.bin"
 #define DEFAULT_DATE "admin"
 #define NAME_OF_AUTHOR "Szymon Ryl"
