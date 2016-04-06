@@ -148,7 +148,7 @@ void list_Of_Ours_Product::loading(std::string file_Name,list_Of_Ours_Product *&
 
                                 if(here_Will_Text[i]=='\n')
                                 {
-                                    //std::cout<<"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"<<'\n';
+                                   
                                     stop=i;
 
                                     break;
@@ -1146,7 +1146,7 @@ void list_Of_Ours_Product::show_Info(const list_Of_Ours_Product o[])
 
     for(unsigned int i=0; i<Class_For_Static::num_Of_Product; i++)
     {
-        std::cout<<"AAAAAAAAAAAAAAAAA";
+      
         std::cout<<i<<o[i].name<<'\n';
     }
 
@@ -1212,7 +1212,7 @@ void list_Of_Ours_Product::add_Item(list_Of_Ours_Product *&o)///CREATE THIS
 
 
 
-    std::cout<<"UWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa"<<Class_For_Static::list_Prod<<'\n';
+   
 
     std::cout<<"Okay, now write price..."<<'\n';
 
@@ -1223,7 +1223,7 @@ void list_Of_Ours_Product::add_Item(list_Of_Ours_Product *&o)///CREATE THIS
 
 
 
-    //  std::cout<<"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"<<'\n';
+    
 
     ///SKONCZYLEM TUTAJ
 
