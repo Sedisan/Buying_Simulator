@@ -101,7 +101,7 @@ void list_Of_Ours_Product::loading(std::string file_Name,list_Of_Ours_Product *&
             {
             default:
                 {
-                    std::cout<<"Loading...: "<<where_Do_You_Go<<'\n';
+                    std::cout<<"Loading... "<<'\n';
 
                     std::ifstream ff(where_Do_You_Go+".bin",std::ifstream::binary);
 
@@ -479,13 +479,13 @@ void User::base_Of_User(const bool searching_User,const std::string login_Fname,
             {
             default:
             {
-                std::cout<<where_Do_You_Go<<'\n';
+                std::cout<<"I loaded users..."<<'\n';
 
                 if(searching_User==true && where_Do_You_Go==login_Fname)
                 {
                     find_User=true;
-                    std::cout<<"To wlasnie dla: "<<where_Do_You_Go<<" "<<login_Fname<<'\n';
-                    std::cout<<"I found something..."<<'\n';
+
+                    std::cout<<"I found user with this login. Searching pass..."<<'\n';
                     std::ifstream f_User(login_Fname+".bin",std::ifstream::binary);
                     f_User.seekg(0,f_User.end);
                     int length=f_User.tellg();
@@ -884,7 +884,7 @@ void error_Mem_Alloc()
     printf("%s","ERROR! BAD MEMORY ALLOC");
     exit(-1);
 }
-unsigned int ile=0;
+
 
 void mem_Allocation(list_Of_Ours_Product *&o)
 {
@@ -898,7 +898,7 @@ void mem_Allocation(list_Of_Ours_Product *&o)
         o=b;
         */
     std::set_new_handler(error_Mem_Alloc);
-    if(ile==0)
+    if(Class_For_Static::num_Of_Product==0)
     {
 
         list_Of_Ours_Product* c=new list_Of_Ours_Product[Class_For_Static::num_Of_Product+1];
@@ -1145,7 +1145,7 @@ void list_Of_Ours_Product::show_Info(const list_Of_Ours_Product o[])
 
     std::cout.flush();
 
-    for(unsigned int i=0; i<Class_For_Static::num_Of_Product; i++)
+    for(unsigned int i=0; i<Class_For_Static::num_Of_Product-1; i++)
     {
 
         std::cout<<i<<o[i].name<<'\n';
@@ -1223,7 +1223,7 @@ void list_Of_Ours_Product::add_Item(list_Of_Ours_Product *&o)///CREATE THIS
 
     std::cout<<"Okay, now write price..."<<'\n';
 
-    ile++;
+
     Class_For_Static::el_Used++;
     Class_For_Static::used++;
 
@@ -1514,7 +1514,7 @@ void list_Of_Ours_Product::remove_Item(list_Of_Ours_Product *&o)
     std::cout<<"WHO: "<<who<<'\n';
     if(!(o->test(who)))control_Panel(1,o);///I know, that clever pointer don't need control, but REMEMBER NEVER TRUST A POINTER
     o[who].deleting_Item();
-   
+    std::cout<<"HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHh";
 
 
     std::cout<<"Iteration full: "<<Class_For_Static::list_Prod<<endl;
@@ -1528,12 +1528,16 @@ void list_Of_Ours_Product::remove_Item(list_Of_Ours_Product *&o)
 int main()
 {
 
-    /* 
+    /* Problem
 
+    *WPISYWANIE ZACZYNA SiE OD 0 STAD GDY USUNIEMY JAKIS OBIEKT
+    *PO USUNIECIU OBIEKTU NP. Z SRODKA KOLEJNE ZACZYNAJA ZAPISYWAC SIE NA KONCU
+
+        *
 
     *
 
-    *This was be a place, when be a notats
+    *
 
 
 
@@ -1560,7 +1564,7 @@ int main()
     s1.open_From_Buying_Item(real_Pointer,1);
     User u1;
     u1.base_Of_User(0,"","",real_Pointer);
-    ile=0;
+
     int decision;
     std::cout<<"Welcome in our base! "<<'\n';
     std::cout<<"Register, enter 1"<<'\n';
@@ -1624,13 +1628,13 @@ void list_Of_Ours_Product::buying_Item( list_Of_Ours_Product *&o)
 
         money[0]=154.55;
         if(money[0]==0)money[0]=1;
-        std::cout<<"U money: "<<*money<<'\n';
+
 
         money[0]*=100;///in pennies
 
         unsigned int cash=static_cast<int>(money[0]);
         delete [] money;
-        std::cout<<"ur money..."<<cash;
+        std::cout<<"Your money..."<<cash;
 
 
          int which=0;
@@ -1645,7 +1649,7 @@ void list_Of_Ours_Product::buying_Item( list_Of_Ours_Product *&o)
             std::cin.sync();
             std::cin>>which;
         }
-
+        std::cout<<"_________________________________________________________________________\n";
 
         if(which==-1)control_Panel(0,o);
 
@@ -1655,6 +1659,9 @@ void list_Of_Ours_Product::buying_Item( list_Of_Ours_Product *&o)
                  "Name: "<<o[which].name<<'\n'
                  <<"Quantity: "<<o[which].how_Much<<'\n'///Quantity->Ilosc
                  <<"Addition info: "<<o[which].info<<'\n';
+
+                 std::cout<<"_________________________________________________________________________\n";
+
         printf("%s,%s,%s","\nBuying? Press 1","\nSelect another product? Press 2 ","\nBack? Press 3");
 
         unsigned int choose;
@@ -1672,7 +1679,7 @@ void list_Of_Ours_Product::buying_Item( list_Of_Ours_Product *&o)
 
             std::cout<<"Please wait..."<<'\n';
             std::cout.flush();///This should help with usleep
-
+            std::cout<<"_________________________________________________________________________\n";
             std::cout<<"How many items could you buy ?";
 
             while(!(std::cin>>h_Much))
@@ -1690,6 +1697,7 @@ void list_Of_Ours_Product::buying_Item( list_Of_Ours_Product *&o)
 
 
             bool decision=false;
+            std::cout<<"_________________________________________________________________________\n";
             std::cout<<"Are you sure buy ?"<<'\n';
 
             printf("%s","Press 1, to accept");
@@ -1705,7 +1713,7 @@ void list_Of_Ours_Product::buying_Item( list_Of_Ours_Product *&o)
                 h_Much_Can_Buy/=h_Much;
                 cash=(cash-((o[which].price)*(h_Much)));
                 o[which].how_Much-=how_Much;
-
+std::cout<<"_________________________________________________________________________\n";
                 User u1;
                 u1.save_Buying_Item(Class_For_Static::actual_User,o->name,h_Much);
                 std::cout<<"cash-> "<<cash<<'\n'<<o[which].how_Much<<'\n';
@@ -1714,6 +1722,9 @@ void list_Of_Ours_Product::buying_Item( list_Of_Ours_Product *&o)
 
             else
             {
+
+                std::cout<<"_________________________________________________________________________\n";
+
                 printf("%s","Too many items or too small your money. Sorry, Zed is dead baby");
 
                 o->buying_Item(o);
