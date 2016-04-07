@@ -1514,7 +1514,7 @@ void list_Of_Ours_Product::remove_Item(list_Of_Ours_Product *&o)
     std::cout<<"WHO: "<<who<<'\n';
     if(!(o->test(who)))control_Panel(1,o);///I know, that clever pointer don't need control, but REMEMBER NEVER TRUST A POINTER
     o[who].deleting_Item();
-    std::cout<<"HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHh";
+   
 
 
     std::cout<<"Iteration full: "<<Class_For_Static::list_Prod<<endl;
@@ -1528,16 +1528,12 @@ void list_Of_Ours_Product::remove_Item(list_Of_Ours_Product *&o)
 int main()
 {
 
-    /* Problem
+    /* 
 
-    *WPISYWANIE ZACZYNA SiE OD 0 STAD GDY USUNIEMY JAKIS OBIEKT
-    *PO USUNIECIU OBIEKTU NP. Z SRODKA KOLEJNE ZACZYNAJA ZAPISYWAC SIE NA KONCU
-
-        *
 
     *
 
-    *
+    *This was be a place, when be a notats
 
 
 
