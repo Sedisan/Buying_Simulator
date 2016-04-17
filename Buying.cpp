@@ -24,7 +24,7 @@
 
 
 
-typedef int(*defin);
+
 class Class_For_Static
 {
 public:
@@ -859,7 +859,7 @@ bool list_Of_Ours_Product::test(const unsigned int decision)
     if(decision>= Class_For_Static::num_Of_Product|| decision<0)return false;
     else return true;
 }
-///Tu powinien byc stos
+
 
 
 list_Of_Ours_Product::list_Of_Ours_Product():name("ERROR"),info(""),price(1),how_Much(1)
@@ -966,14 +966,7 @@ void control_Panel(bool decision_Admin,list_Of_Ours_Product *&o)
     //Class_For_Static::el_Used>0?ile=Class_For_Static::el_Used-1:Class_For_Static::el_Used;
     std::cout<<"Hello in you panel, ";
     decision_Admin==1?std::cout<<"Admin"<<'\n':std::cout<<"Your login: "<<Class_For_Static::actual_User<<'\n';
-    std::cout<<"_____________________________________________________\n";
-    std::cout<<"Actual product in our base: "
-             <<'\n';
 
-std::cout<<"_____________________________________________________\n";
-
-
-    std::cout<<'\n'<<'\n';
 
     std::cout<<"Press: "<<'\n';
 
@@ -1051,7 +1044,7 @@ case 0:
     }
     case 4:
     {
-        o->buying_Item(o);/// Dodac Rekomendowane przedmioty(losowanie)
+        o->buying_Item(o);
         break;
     }
     case 5:
@@ -1124,7 +1117,7 @@ void list_Of_Product(list_Of_Ours_Product *&o)
 
 
 
-    printf("%s","Exacly:\n ");
+    printf("%s","Exactly: \n ");
 
     std::cout<<Class_For_Static::list_Prod<<'\n';
 
@@ -1138,6 +1131,13 @@ void list_Of_Ours_Product::show_Info(const list_Of_Ours_Product o[])
 {
 
 
+    for(unsigned int i=0; i<Class_For_Static::num_Of_Product; i++)
+    {
+
+        std::cout<<i<<o[i].name<<'\n';
+    }
+
+
     unsigned int which;
     std::cout<<"Which item showing information? "<<'\n';
     std::cin>>which;
@@ -1145,11 +1145,8 @@ void list_Of_Ours_Product::show_Info(const list_Of_Ours_Product o[])
 
     std::cout.flush();
 
-    for(unsigned int i=0; i<Class_For_Static::num_Of_Product-1; i++)
-    {
 
-        std::cout<<i<<o[i].name<<'\n';
-    }
+
 
 
     //std::cout<<"UWAGA: "<<o[6].name<<'\n';
@@ -1199,10 +1196,9 @@ void list_Of_Ours_Product::add_Item(list_Of_Ours_Product *&o)///CREATE THIS
 
 
 
-    std::string tmp; // brzydkie rozwi¹zanie
+    std::string tmp;
     sprintf((char*)tmp.c_str(), "%d", Class_For_Static::num_Of_Product);
     std::string str = tmp.c_str();
-    //std::cout<<"UWAGA:"<<str;
     tmp=str;
     tmp+=".";
 
@@ -1276,7 +1272,7 @@ void list_Of_Ours_Product::add_Item(list_Of_Ours_Product *&o)///CREATE THIS
     save::saving(name_Product,temp_From_Float_And_Int);
     save::saving(name_Product,o[Class_For_Static::num_Of_Product-1].info);
 
-    o->show_Info(o);///It's WORK!!!
+    o->show_Info(o);
 
 
 
@@ -1505,7 +1501,7 @@ void list_Of_Ours_Product::remove_Item(list_Of_Ours_Product *&o)
     int who=std::atoi(which.c_str());
 
 
-    std::cout<<"Remember, if you can back, write number,smaller than 0"<<'\n';
+    std::cout<<" if you can back, write number,smaller than 0"<<'\n';
 
 
     validationTest(who);
@@ -1514,7 +1510,7 @@ void list_Of_Ours_Product::remove_Item(list_Of_Ours_Product *&o)
     std::cout<<"WHO: "<<who<<'\n';
     if(!(o->test(who)))control_Panel(1,o);///I know, that clever pointer don't need control, but REMEMBER NEVER TRUST A POINTER
     o[who].deleting_Item();
-    std::cout<<"HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHh";
+
 
 
     std::cout<<"Iteration full: "<<Class_For_Static::list_Prod<<endl;
@@ -1530,10 +1526,7 @@ int main()
 
     /* Problem
 
-    *WPISYWANIE ZACZYNA SiE OD 0 STAD GDY USUNIEMY JAKIS OBIEKT
-    *PO USUNIECIU OBIEKTU NP. Z SRODKA KOLEJNE ZACZYNAJA ZAPISYWAC SIE NA KONCU
-
-        *
+    *
 
     *
 
@@ -1654,7 +1647,7 @@ void list_Of_Ours_Product::buying_Item( list_Of_Ours_Product *&o)
         if(which==-1)control_Panel(0,o);
 
         if(!(o->test(which)))o->buying_Item(o);
-        std::cout<<"WHICH WYNOSI: "<<which<<'\n';
+
         std::cout<<"Price: "<<o[which].price<<'\n'<<
                  "Name: "<<o[which].name<<'\n'
                  <<"Quantity: "<<o[which].how_Much<<'\n'///Quantity->Ilosc
@@ -1690,7 +1683,7 @@ void list_Of_Ours_Product::buying_Item( list_Of_Ours_Product *&o)
                 std::cin.sync();
             }
 
-            //std::cout<<'\n'<<'\n'<<'\n'<<h_Much_Can_Buy/h_Much<<'\n'<<'\n'<<'\n'<<"Czy: "<<o[which].how_Much<<'\n'<<"Jest wieksze od: "<<h_Much_Can_Buy<<'\n';
+
 
 
 
@@ -1745,4 +1738,3 @@ std::cout<<"____________________________________________________________________
 
 
 }
-
