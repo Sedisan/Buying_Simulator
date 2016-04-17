@@ -1734,7 +1734,4 @@ std::cout<<"____________________________________________________________________
     else printf("%s,%s","Actually we don't have a item...","Maybe contact with Administrator? \n");
 
 
-
-
-
 }
