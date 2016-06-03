@@ -75,7 +75,7 @@ public:
     void show_Info(const list_Of_Ours_Product o[]);
     void deleting_Item()
     {
-    ///    std::shared_ptr<list_Of_Ours_Product> obj1(new list_Of_Ours_Product);   ///I know that is wrong way, but i like this
+    ///    std::shared_ptr<list_Of_Ours_Product> obj1(new list_Of_Ours_Product); 
     }
     void buying_Item(list_Of_Ours_Product *&o);
     void remove_Item(list_Of_Ours_Product *&o);
@@ -134,14 +134,15 @@ void list_Of_Ours_Product::loading(std::string file_Name,list_Of_Ours_Product *&
 
                             }
 
-                   // std::cout<<"Static: "<<Class_For_Static::num_Of_Product<<" number: "<<number_Of_Repetitions<<'\n';
+          
 
 
                             if(wheter_Save)o[number_Of_Repetitions-1].price=std::stoi(temporarity_For_Save_Of_Object);
 
 
                             if(wheter_Save)o[number_Of_Repetitions-1].name=where_Do_You_Go;
-                             //std::cout<<"Static: "<<Class_For_Static::num_Of_Product<<" number: "<<number_Of_Repetitions<<'\n';
+  
+
                             temporarity_For_Save_Of_Object="";
 
                             for(int i=stop+2;i<length;i++)
